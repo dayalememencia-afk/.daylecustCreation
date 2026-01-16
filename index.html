@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DaylecustCreation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -15,33 +16,49 @@
             background-attachment: fixed;
             height: 100vh;
             display: flex;
+            flex-direction: column; /* Coloca o Zap embaixo do nome */
             justify-content: center;
             align-items: center;
-            background-color: black; /* Fundo preto caso a imagem demore a carregar */
+            background-color: #000; /* Fundo preto base */
+            font-family: 'Arial Black', sans-serif;
         }
 
         h1 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 4rem;
-            font-weight: bold;
+            font-size: 3.5rem;
             text-transform: uppercase;
-            /* Mistura de Roxo e Azul Neon */
             color: #fff;
             text-align: center;
-            /* Efeito Neon Futurista */
+            /* Mistura Neon: Roxo, Azul e sombra Preta profunda */
             text-shadow: 
-                0 0 5px #fff,
                 0 0 10px #fff,
                 0 0 20px #a020f0, /* Roxo */
-                0 0 40px #a020f0,
-                0 0 80px #0000ff, /* Azul */
-                0 0 90px #0000ff,
-                0 0 100px #0000ff;
-            letter-spacing: 5px;
+                0 0 40px #0000ff, /* Azul */
+                0 0 60px #000,    /* Preto para dar profundidade */
+                5px 5px 20px #000;
+            margin-bottom: 30px;
+        }
+
+        .zap-link {
+            text-decoration: none;
+            color: #25D366; /* Verde Neon do Zap */
+            font-size: 6rem;
+            transition: 0.3s;
+            filter: drop-shadow(0 0 15px #25D366);
+        }
+
+        .zap-link:hover {
+            transform: scale(1.2); /* Ele cresce ao tocar */
+            filter: drop-shadow(0 0 30px #25D366);
         }
     </style>
 </head>
 <body>
+
     <h1>DaylecustCreation</h1>
+
+    <a href="https://wa.me/5514981746484" target="_blank" class="zap-link">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
 </body>
 </html>
