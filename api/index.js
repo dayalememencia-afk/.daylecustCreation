@@ -5,15 +5,14 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // A OpenAI envia comandos via POST. Este bloco responde aos dois comandos obrigatórios:
+  // Se a OpenAI enviar um comando (POST), respondemos a varredura
   if (req.method === 'POST') {
-    const { method } = req.body;
-
-    // 1. Comando de Varredura (Scan)
+    const { method } = req.body || {};
+    
     if (method === 'tools/list') {
       return res.status(200).json({
         jsonrpc: "2.0",
-        id: req.body.id,
+        id: req.body.id || 1,
         result: {
           tools: [{
             name: "saudacao_mestra",
@@ -23,17 +22,8 @@ module.exports = async (req, res) => {
         }
       });
     }
-
-    // 2. Comando de Execução
-    if (method === 'tools/call') {
-      return res.status(200).json({
-        jsonrpc: "2.0",
-        id: req.body.id,
-        result: { content: [{ type: "text", text: "Olá Mestra Day! O seu servidor MCP está online e funcionando perfeitamente." }] }
-      });
-    }
   }
 
-  // Resposta padrão para o navegador (o que você vê no print 1000030963)
-  return res.status(200).json({ status: "Servidor MCP Ativo", use: "OpenAI Scan" });
+  // Resposta para quando você visita o link no navegador
+  return res.status(200).json({ status: "Servidor MCP Ativo", msg: "Aguardando Scan da OpenAI" });
 };
