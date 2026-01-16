@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     return res.status(200).end();
   }
 
-  const response = {
+  const mcpData = {
     jsonrpc: "2.0",
     id: req.body?.id || 1,
     result: {
@@ -15,14 +15,11 @@ module.exports = async (req, res) => {
         {
           name: "saudacao_mestra",
           description: "Saudação oficial para a Mestra Day",
-          inputSchema: {
-            type: "object",
-            properties: {}
-          }
+          inputSchema: { type: "object", properties: {} }
         }
       ]
     }
   };
 
-  return res.status(200).json(response);
+  return res.status(200).json(mcpData);
 };
