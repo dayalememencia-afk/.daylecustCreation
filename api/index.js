@@ -5,14 +5,14 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  return res.status(200).json({
+  res.status(200).json({
     jsonrpc: "2.0",
     id: req.body?.id || 1,
     result: {
       tools: [
         {
           name: "saudacao_mestra",
-          description: "Saudação especial para a Mestra Day",
+          description: "Saudação oficial para a Mestra Day",
           inputSchema: { type: "object", properties: {} }
         }
       ]
