@@ -5,8 +5,8 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // A OpenAI envia um comando chamado 'list_tools'. Este código responde a ele:
-  res.status(200).json({
+  // Esta resposta funciona para qualquer link que a OpenAI tentar
+  return res.status(200).json({
     jsonrpc: "2.0",
     id: req.body?.id || 1,
     result: {
