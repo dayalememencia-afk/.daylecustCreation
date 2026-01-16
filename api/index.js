@@ -1,23 +1,22 @@
-module.exports = (req, res) => {
-  // Configurações para a OpenAI conseguir ler o servidor
+module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Responde rápido se for apenas um teste de conexão
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+  if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // Entrega as ferramentas que a OpenAI quer escanear
+  // A OpenAI envia um comando chamado 'list_tools'. Este código responde a ele:
   res.status(200).json({
-    mcp_version: "1.0",
-    tools: [
-      {
-        name: "saudacao_mestra",
-        description: "Saudação oficial para a Mestra Day",
-        input_schema: { type: "object", properties: {} }
-      }
-    ]
+    jsonrpc: "2.0",
+    id: req.body?.id || 1,
+    result: {
+      tools: [
+        {
+          name: "saudacao_mestra",
+          description: "Saudação oficial para a Mestra Day",
+          inputSchema: { type: "object", properties: {} }
+        }
+      ]
+    }
   });
 };
